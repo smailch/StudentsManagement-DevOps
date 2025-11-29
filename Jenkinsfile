@@ -46,6 +46,7 @@ pipeline {
         success { echo 'Pipeline CI/CD complète terminée – Image publiée sur Docker Hub !' }
         failure { echo 'Échec de la pipeline' }
 
+// Test commit automatique
     }
 }
 
