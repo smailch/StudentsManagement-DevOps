@@ -25,8 +25,8 @@ pipeline {
         
         stage('Docker Build') {
             steps {
-                sh 'docker build -t smailch/students-management:latest .'
-                sh 'docker tag smailch/students-management:latest smailch/students-management:${BUILD_NUMBER}'
+                sh 'docker build -t chemlali/studentsmgmt:latest .'
+                sh 'docker tag chemlali/studentsmgmt:latest chemlali/studentsmgmt:${BUILD_NUMBER}'
             }
         }
         
@@ -35,8 +35,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials',
                                  usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
-                    sh 'docker push smailch/students-management:latest'
-                    sh 'docker push smailch/students-management:${BUILD_NUMBER}'
+                    sh 'docker push chemlali/studentsmgmt:latest'
+                    sh 'docker push chemlali/studentsmgmt:${BUILD_NUMBER}'
                 }
             }
         }
@@ -47,3 +47,4 @@ pipeline {
         failure { echo 'Échec de la pipeline' }
     }
 }
+
